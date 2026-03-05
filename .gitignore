@@ -7,3 +7,13 @@ helix-importer-ui
 .DS_Store
 *.bak
 .idea
+
+# Secrets and credentials
+credentials.env
+**/rsa_key.p8
+**/rsa_key_base64.txt
+*.pem
+*.p12
+*.jks
+keystore.jks
+salesforce_jwt_tokens.json
