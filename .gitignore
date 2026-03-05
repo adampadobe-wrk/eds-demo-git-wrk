@@ -9,11 +9,4 @@ helix-importer-ui
 .idea
 
 # Secrets and credentials
-credentials.env
-**/rsa_key.p8
-**/rsa_key_base64.txt
-*.pem
-*.p12
-*.jks
-keystore.jks
-salesforce_jwt_tokens.json
+01_Core_Setup_Authentication/
