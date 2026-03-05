@@ -1,22 +1,22 @@
 {
   "mappings": [
-    "/content/wknd-universal/language-masters/en:/",
-    "/content/wknd-universal/language-masters/en/:/en/",
-    "/content/wknd-universal/language-masters/fr/:/fr/",
-    "/content/wknd-universal/language-masters/fr:/fr",
-    "/content/wknd-universal/language-masters/es/:/es/",
-    "/content/wknd-universal/language-masters/es:/es",
-    "/content/wknd-universal/language-masters/ja/:/ja/",
-    "/content/wknd-universal/language-masters/ja:/ja",
-    "/content/wknd-universal/language-masters/de/:/de/",
-    "/content/wknd-universal/language-masters/de:/de",
-    "/content/wknd-universal/configuration:/.helix/config.json",
-    "/content/wknd-universal/metadata:/metadata.json",
-    "/content/wknd-universal/redirects:/redirects.json",
-    "/content/wknd-universal/placeholders:/placeholders.json"
+    "/content/apalmer-eds-demo-git-wrk/language-masters/en:/",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/en/:/en/",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/fr/:/fr/",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/fr:/fr",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/es/:/es/",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/es:/es",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/ja/:/ja/",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/ja:/ja",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/de/:/de/",
+    "/content/apalmer-eds-demo-git-wrk/language-masters/de:/de",
+    "/content/apalmer-eds-demo-git-wrk/configuration:/.helix/config.json",
+    "/content/apalmer-eds-demo-git-wrk/metadata:/metadata.json",
+    "/content/apalmer-eds-demo-git-wrk/redirects:/redirects.json",
+    "/content/apalmer-eds-demo-git-wrk/placeholders:/placeholders.json"
   ],
   "includes": [
-    "/content/wknd-universal/",
-    "/content/dam/wknd-universal/"
+    "/content/apalmer-eds-demo-git-wrk/",
+    "/content/dam/apalmer-eds-demo-git-wrk/"
   ]
 }
