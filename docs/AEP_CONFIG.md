@@ -1,6 +1,8 @@
 # AEP (Adobe Experience Platform) Connection – eds-demo-git-wrk
 
-This site loads the Web SDK (Alloy) via **Adobe Launch (Tags)** instead of calling the SDK directly. All datastream, consent, rules, and Web Push configuration is done in the Launch property. This matches the working setup from **ExperienceManager/demo-emea-eds-verify**.
+This site loads the Web SDK (Alloy) via **Adobe Launch (Tags)** only. No direct Web SDK code on the page. All datastream, consent, rules, and Web Push configuration is done in the Launch property. This matches the working setup from **ExperienceManager/demo-emea-eds-verify**.
+
+**See also:** [AEP-IMPLEMENTATION-PLAN.md](./AEP-IMPLEMENTATION-PLAN.md) for the step-by-step approach and rollback instructions.
 
 ---
 
@@ -12,16 +14,30 @@ This site loads the Web SDK (Alloy) via **Adobe Launch (Tags)** instead of calli
 
 ---
 
-## 2. Configure in Launch
+## 2. Configure in Launch (Required for AEP)
 
-In your Launch property, configure the following.
+In **Data Collection → Tags** → your property → **Extensions** and **Rules**:
 
-### Web SDK extension (Adobe Experience Platform Web SDK)
+### 2a. Web SDK extension (Adobe Experience Platform Web SDK)
 
-- **Datastream:** `cd2c9528-abe4-4593-aa31-56a9135be5d9`
-- **Org ID:** `BF9C27AA6464801C0A495FD0@AdobeOrg`
-- **Use beta SDK:** Enable in the extension settings if you need Web Push or other beta features.
-- **Consent:** Set default consent or use a CMP; call `alloy("setConsent", {...})` when the user accepts.
+1. Go to **Extensions** → **Adobe Experience Platform Web SDK** → **Configure**.
+2. **Datastream:** Select or enter `cd2c9528-abe4-4593-aa31-56a9135be5d9` (Development environment).
+3. **Org ID:** `BF9C27AA6464801C0A495FD0@AdobeOrg`
+4. Save. The extension injects the alloy stub and library; no code on the page is needed.
+
+### 2b. Rules – Page view and link clicks
+
+1. **Page view rule**
+   - Event: **Library Loaded**
+   - Action: **Send Event** (Web SDK extension)
+   - Event type: `web.webpagedetails.pageViews`
+   - XDM: `web.webPageDetails.name`, `web.webPageDetails.URL`, `web.webPageDetails.pageViews.value = 1`
+
+2. **Link clicks rule** (optional)
+   - Event: **Click** (e.g. all links or specific elements)
+   - Action: **Send Event** with event type `web.webinteraction.linkClicks`
+
+3. **Publish** the library to Development.
 
 ### Web Push (optional)
 
@@ -32,13 +48,6 @@ If you use the push-opt-in block and want open/click tracking in AEP:
   - Application ID (e.g. `eds-demo-git-wrk-web`)
   - Tracking dataset ID (your AJO Push Tracking Experience Event dataset)
 - The service worker is registered from the push-opt-in block at `/scripts/alloyServiceWorker.min.js` (the extension has no path setting).
-
-### Rules
-
-- **Page view:** Add a rule on **Library Loaded** (or **Page Bottom**) that sends a **Send Event** action with:
-  - Event type: `web.webpagedetails.pageViews`
-  - XDM: `web.webPageDetails.name`, `web.webPageDetails.URL`, `web.webPageDetails.pageViews.value = 1`
-- Add any custom rules for link clicks, form submits, etc.
 
 ---
 

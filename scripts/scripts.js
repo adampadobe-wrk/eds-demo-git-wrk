@@ -27,7 +27,6 @@ import {
   createSource,
   getHostname
 } from './utils.js';
-import { initAepTracking } from './aep-tracking.js';
 
 function addPreconnect(origin) {
   try {
@@ -307,10 +306,9 @@ async function renderWBDataLayer() {
 async function loadEager(doc) {
   setPageLanguage();
 
-  // AEP: page views + link clicks via Web SDK (run early so it fires even if theme/header fail)
-  // eslint-disable-next-line no-console
-  console.log('[AEP] scripts.js calling initAepTracking');
-  initAepTracking();
+  // AEP: page views + link clicks are sent via Launch (Tags) Web SDK extension rules.
+  // Configure the Web SDK extension with datastream and add rules for page view + link clicks.
+  // See docs/AEP_CONFIG.md and docs/AEP-IMPLEMENTATION-PLAN.md.
 
   // Web push: push-opt-in block needs this to call alloy('sendPushSubscription')
   // Configure in Journey Optimizer and set values here (see docs/PUSH_SETUP.md)
