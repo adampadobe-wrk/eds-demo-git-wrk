@@ -1,9 +1,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <link rel="preconnect" href="https://edge.adobedc.net"/>
-<!-- Web SDK direct embed – bypasses Launch for reliable window.alloy -->
-<script src="https://cdn1.adoberesources.net/alloy/2.24.0/alloy.min.js"></script>
+<!-- Web SDK direct embed – stub in external file to avoid EDS template processing -->
+<script src="/scripts/alloy-stub.js"></script>
+<script src="https://cdn1.adoberesources.net/alloy/2.24.0/alloy.min.js" async></script>
 <script>
-  window.alloy("configure",{
+  alloy("configure",{
     "edgeConfigId":"cd2c9528-abe4-4593-aa31-56a9135be5d9",
     "orgId":"BF9C27AA6464801C0A495FD0@AdobeOrg"
   });
