@@ -44,7 +44,7 @@ export default async function decorate(block) {
         return;
       }
 
-      const reg = await navigator.serviceWorker.getRegistration('/') || await navigator.serviceWorker.register('/scripts/sw.js', { scope: '/' });
+      const reg = await navigator.serviceWorker.getRegistration('/') || await navigator.serviceWorker.register('/scripts/alloyServiceWorker.min.js', { scope: '/' });
       await navigator.serviceWorker.ready;
 
       const subscription = await reg.pushManager.subscribe({

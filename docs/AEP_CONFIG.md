@@ -30,8 +30,8 @@ If you use the push-opt-in block and want open/click tracking in AEP:
 - In the Web SDK extension, configure **Push notifications** with:
   - VAPID public key (from your push setup)
   - Application ID (e.g. `eds-demo-git-wrk-web`)
-  - **Service worker path:** `/scripts/alloyServiceWorker.min.js` (for open/click tracking)
   - Tracking dataset ID (your AJO Push Tracking Experience Event dataset)
+- The service worker is registered from the push-opt-in block at `/scripts/alloyServiceWorker.min.js` (the extension has no path setting).
 
 ### Rules
 

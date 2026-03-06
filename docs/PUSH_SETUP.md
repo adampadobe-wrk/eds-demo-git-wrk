@@ -46,9 +46,7 @@ This project is configured for web push with Adobe Journey Optimizer. Complete t
 
 - **Web SDK** is configured via Launch with push notifications in the extension.
 - **Push opt-in block:** add a **push-opt-in** block in your page content; users who click it get a subscription and it is sent via `alloy('sendPushSubscription', { subscription })`.
-- **Service workers:**
-  - **Launch "Web Push" rule** registers the Adobe Alloy service worker for open/click tracking. Use **`/scripts/alloyServiceWorker.min.js`** with scope **`/`** in Launch.
-  - **`/scripts/sw.js`** – custom worker used when the user opts in via the push-opt-in block (receives push from AJO).
+- **Service worker:** The push-opt-in block registers **`/scripts/alloyServiceWorker.min.js`** (Adobe's worker) with scope **`/`**. This handles push display and open/click tracking. The Launch extension has no service worker path setting—you register it from your code (see [Adobe docs](https://experienceleague.adobe.com/en/docs/experience-platform/collection/js/commands/configure/pushnotifications#install-the-service-worker)).
 
 ---
 
@@ -59,8 +57,7 @@ In your Launch property, in the **Adobe Experience Platform Web SDK** extension:
 1. **Configure** → **Push notifications**
 2. **Application ID:** `eds-demo-git-wrk-web` (same as above)
 3. **VAPID public key:** Same as in scripts.js
-4. **Service worker path:** `/scripts/alloyServiceWorker.min.js` (for open/click tracking)
-5. **Tracking dataset ID** (optional): Your CJM Push Tracking Experience Event dataset for open/click events in AEP
+4. **Tracking dataset ID:** Your CJM Push Tracking Experience Event dataset for open/click events in AEP (required in the extension)
 
 ---
 
