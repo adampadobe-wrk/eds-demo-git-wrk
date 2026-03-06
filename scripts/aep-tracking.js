@@ -4,6 +4,8 @@
  * Requires Launch + Web SDK to load (window.alloy).
  * Uses onPageActivation (prerender-aware) and documentUnloading per reference martech.
  */
+// eslint-disable-next-line no-console
+console.log('[AEP] aep-tracking.js module loaded');
 
 function onPageActivation(cb) {
   if (document.prerendering) {
@@ -102,6 +104,8 @@ function setupLinkClickTracking() {
 }
 
 export async function initAepTracking() {
+  // eslint-disable-next-line no-console
+  console.log('[AEP] initAepTracking called');
   await waitForAlloy();
   // eslint-disable-next-line no-console
   console.log('[AEP] alloy ready:', typeof window.alloy === 'function');

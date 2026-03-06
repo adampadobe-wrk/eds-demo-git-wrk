@@ -308,6 +308,8 @@ async function loadEager(doc) {
   setPageLanguage();
 
   // AEP: page views + link clicks via Web SDK (run early so it fires even if theme/header fail)
+  // eslint-disable-next-line no-console
+  console.log('[AEP] scripts.js calling initAepTracking');
   initAepTracking();
 
   // Web push: push-opt-in block needs this to call alloy('sendPushSubscription')
