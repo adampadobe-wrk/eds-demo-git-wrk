@@ -2,7 +2,16 @@
  * AEP Web SDK tracking: page views and link clicks.
  * Fires via alloy() so it works regardless of Launch rules.
  * Requires Launch + Web SDK to load (window.alloy).
+ * Uses onPageActivation (prerender-aware) and documentUnloading per reference martech.
  */
+
+function onPageActivation(cb) {
+  if (document.prerendering) {
+    document.addEventListener('prerenderingchange', cb, { once: true });
+  } else {
+    cb();
+  }
+}
 
 function waitForAlloy(maxWait = 10000) {
   return new Promise((resolve) => {
@@ -24,9 +33,12 @@ function waitForAlloy(maxWait = 10000) {
 }
 
 function sendPageView() {
+  // eslint-disable-next-line no-console
+  console.log('[AEP] sendPageView called');
   if (typeof window.alloy !== 'function') return;
   try {
     window.alloy('sendEvent', {
+      documentUnloading: true,
       xdm: {
         eventType: 'web.webpagedetails.pageViews',
         web: {
@@ -53,6 +65,7 @@ function sendLinkClick(link) {
     const href = link.href || '';
     const name = (link.textContent || link.getAttribute('aria-label') || href).trim().substring(0, 255);
     window.alloy('sendEvent', {
+      documentUnloading: true,
       xdm: {
         eventType: 'web.webinteraction.linkClicks',
         web: {
@@ -90,7 +103,20 @@ function setupLinkClickTracking() {
 
 export async function initAepTracking() {
   await waitForAlloy();
-  if (typeof window.alloy !== 'function') return;
-  sendPageView();
+  // eslint-disable-next-line no-console
+  console.log('[AEP] alloy ready:', typeof window.alloy === 'function');
+  if (typeof window.alloy !== 'function') {
+    // Fallback: retry when load completes (Launch may load alloy late)
+    if (document.readyState !== 'complete') {
+      window.addEventListener('load', () => {
+        if (typeof window.alloy === 'function') {
+          onPageActivation(sendPageView);
+        }
+      });
+    }
+    setupLinkClickTracking();
+    return;
+  }
+  onPageActivation(sendPageView);
   setupLinkClickTracking();
 }
