@@ -42,6 +42,7 @@ function sendPageView() {
     window.alloy('sendEvent', {
       documentUnloading: true,
       xdm: {
+        _demoemea: {},
         eventType: 'web.webpagedetails.pageViews',
         web: {
           webPageDetails: {
@@ -69,6 +70,7 @@ function sendLinkClick(link) {
     window.alloy('sendEvent', {
       documentUnloading: true,
       xdm: {
+        _demoemea: {},
         eventType: 'web.webinteraction.linkClicks',
         web: {
           webInteraction: {

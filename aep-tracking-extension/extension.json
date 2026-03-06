@@ -1,0 +1,36 @@
+{
+  "platform": "web",
+  "displayName": "AEP Tracking",
+  "name": "aep-tracking",
+  "version": "1.0.0",
+  "description": "Sends page views and link clicks to Adobe Experience Platform via the Web SDK (alloy). Requires the Adobe Experience Platform Web SDK extension.",
+  "iconPath": "resources/icons/icon.svg",
+  "author": {
+    "name": "Adobe",
+    "url": "https://adobe.com"
+  },
+  "viewBasePath": "src/view/",
+  "actions": [
+    {
+      "name": "init-tracking",
+      "displayName": "Initialize AEP Tracking",
+      "libPath": "src/lib/actions/init-tracking.js",
+      "viewPath": "actions/init-tracking.html",
+      "schema": {
+        "$schema": "http://json-schema.org/draft-04/schema#",
+        "type": "object",
+        "properties": {
+          "includePageView": {
+            "type": "boolean",
+            "default": true
+          },
+          "includeLinkClicks": {
+            "type": "boolean",
+            "default": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  ]
+}

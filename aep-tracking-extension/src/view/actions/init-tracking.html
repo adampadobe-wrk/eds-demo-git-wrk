@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Initialize AEP Tracking</title>
+</head>
+<body>
+  <div class="row">
+    <label for="includePageView">
+      <input type="checkbox" id="includePageView" checked>
+      Send page views
+    </label>
+  </div>
+  <div class="row">
+    <label for="includeLinkClicks">
+      <input type="checkbox" id="includeLinkClicks" checked>
+      Track link clicks
+    </label>
+  </div>
+  <script>
+    window.extensionBridge.register({
+      init: function (info) {
+        var s = info.settings || {};
+        document.getElementById('includePageView').checked = s.includePageView !== false;
+        document.getElementById('includeLinkClicks').checked = s.includeLinkClicks !== false;
+      },
+      getSettings: function () {
+        return {
+          includePageView: document.getElementById('includePageView').checked,
+          includeLinkClicks: document.getElementById('includeLinkClicks').checked
+        };
+      },
+      validate: function () {
+        return true;
+      }
+    });
+  </script>
+</body>
+</html>
