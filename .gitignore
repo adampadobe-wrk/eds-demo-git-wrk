@@ -10,3 +10,10 @@ helix-importer-ui
 
 # Secrets and credentials
 01_Core_Setup_Authentication/
+.env
+.env.local
+.env.*.local
+*.pem
+private.key
+credentials.env
+**/credentials*.env
