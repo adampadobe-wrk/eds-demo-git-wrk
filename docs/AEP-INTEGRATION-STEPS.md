@@ -119,6 +119,19 @@ If you want Launch API automation:
 
 ---
 
+## Same datastream for multiple sites
+
+**Yes, multiple sites can use the same datastream.** When you retire the old site, only the new one will send data. Each event includes `web.webPageDetails.URL` and referrer, so you can distinguish traffic by site in AEP.
+
+## Alignment with ExperienceManager (demo-emea-eds-verify)
+
+See **`docs/AEP_CONFIG.md`** for a comparison with your working project and optional Launch-based setup.
+
+**Current approach (eds-demo-git-wrk):** Direct Web SDK in `head.html` + Launch for Target/other extensions.  
+**Old project approach:** Launch-only (Web SDK configured in Launch property).  
+
+If you later move to Launch-only, remove the direct Web SDK from `head.html` and configure the Web SDK extension in your Launch property (`9f8bfb0ead12`) with datastream `cd2c9528-abe4-4593-aa31-56a9135be5d9`.
+
 ## References
 
 - [Install Web SDK](https://experienceleague.adobe.com/en/docs/experience-platform/web-sdk/install/library)

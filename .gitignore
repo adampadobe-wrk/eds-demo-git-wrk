@@ -17,3 +17,7 @@ helix-importer-ui
 private.key
 credentials.env
 **/credentials*.env
+
+# Web push: private key for AJO only (never commit)
+vapid-private.txt
+push-credentials.txt
