@@ -27,6 +27,7 @@ import {
   createSource,
   getHostname
 } from './utils.js';
+import { initAepTracking } from './aep-tracking.js';
 
 function addPreconnect(origin) {
   try {
@@ -340,6 +341,9 @@ async function loadEager(doc) {
   } catch (e) {
     // do nothing
   }
+
+  // AEP: page views + link clicks via Web SDK (does not block LCP)
+  initAepTracking();
 }
 
 /**
