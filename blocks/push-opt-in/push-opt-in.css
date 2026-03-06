@@ -1,0 +1,18 @@
+.push-opt-in .push-opt-in-button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background: #1473e6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.push-opt-in .push-opt-in-button:hover:not(:disabled) {
+  background: #0d66d0;
+}
+
+.push-opt-in .push-opt-in-button:disabled {
+  cursor: default;
+  opacity: 0.8;
+}
