@@ -307,6 +307,9 @@ async function renderWBDataLayer() {
 async function loadEager(doc) {
   setPageLanguage();
 
+  // AEP: page views + link clicks via Web SDK (run early so it fires even if theme/header fail)
+  initAepTracking();
+
   // Web push: push-opt-in block needs this to call alloy('sendPushSubscription')
   // Configure in Journey Optimizer and set values here (see docs/PUSH_SETUP.md)
   const PUSH_APP_ID = 'eds-demo-git-wrk-web';
@@ -341,9 +344,6 @@ async function loadEager(doc) {
   } catch (e) {
     // do nothing
   }
-
-  // AEP: page views + link clicks via Web SDK (does not block LCP)
-  initAepTracking();
 }
 
 /**
