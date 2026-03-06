@@ -305,6 +305,13 @@ async function renderWBDataLayer() {
  */
 async function loadEager(doc) {
   setPageLanguage();
+
+  // Web push: push-opt-in block needs this to call alloy('sendPushSubscription')
+  // Configure in Journey Optimizer and set values here (see docs/PUSH_SETUP.md)
+  const PUSH_APP_ID = 'eds-demo-git-wrk-web';
+  const VAPID_PUBLIC_KEY = 'BAWQFgbVCXn3naFVAsBd52y-T1ZGdhbxlldRmw4bm6TwAP4IbnGBQ3J3RSeslXR48zuL2hqxp0SfSH-407t1C3s';
+  window.__pushConfig = { applicationId: PUSH_APP_ID, vapidPublicKey: VAPID_PUBLIC_KEY };
+
   // Preconnect dynamically to speed up LCP fetch without hardcoding hosts
   try {
     addPreconnect(window.location.origin);
