@@ -107,8 +107,8 @@ If you want Launch API automation:
 
 1. Create an integration in [Adobe Developer Console](https://developer.adobe.com/console).
 2. Add the **Adobe Experience Platform Data Collection** API.
-3. Generate a JWT or OAuth token.
-4. Share the credentials (securely) so I can call the Launch API.
+3. Create OAuth Server-to-Server credentials and add them to `.env`.
+4. See **[LAUNCH_API_SETUP.md](./LAUNCH_API_SETUP.md)** for full setup (credentials, OAuth scope, troubleshooting).
 
 ---
 

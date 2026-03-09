@@ -8,7 +8,8 @@ This site loads the Web SDK (Alloy) via **Adobe Launch (Tags)** only. No direct 
 
 ## 1. Launch Property
 
-- **Property:** `b2f5fbf72a47/9f8bfb0ead12`
+- **Company ID:** `CO72fab825b7fc466d94f9ef13723dde55`
+- **Property ID:** `PR5057e9b14a5e4fae942acbb8a85da6c8`
 - **Embed URL:** `https://assets.adobedtm.com/b2f5fbf72a47/9f8bfb0ead12/launch-6e7d1b4318bd-development.min.js`
 - **Loaded from:** `head.html`
 
@@ -72,6 +73,12 @@ To fix the Target error:
 Both `demo-emea-eds-verify` and `eds-demo-git-wrk` can use datastream `cd2c9528-abe4-4593-aa31-56a9135be5d9`. Data is distinguished by URL and other XDM fields. When you retire the old site, only the new one will send data.
 
 ---
+
+## Launch API (scripts)
+
+For API automation (fetch data elements, create rules via script):
+
+- **[LAUNCH_API_SETUP.md](./LAUNCH_API_SETUP.md)** – Core setup: credentials, OAuth scope, troubleshooting
 
 ## References
 

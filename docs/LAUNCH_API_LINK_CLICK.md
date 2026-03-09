@@ -2,6 +2,8 @@
 
 This document describes how to create the link click data elements and rule via the **Reactor API** instead of manually in the Launch UI.
 
+**See [LAUNCH_API_SETUP.md](./LAUNCH_API_SETUP.md)** for core credentials, OAuth scope, and troubleshooting.
+
 ## Prerequisites
 
 1. **Adobe Developer Console integration** with:
@@ -39,10 +41,10 @@ node scripts/launch-api-link-click-rule.js
 
 1. **Data Element: Link Click URL** – Returns the `href` of the clicked link
 2. **Data Element: Link Click Text** – Returns the text of the clicked link
-3. **Rule: Link Clicks - Send to Web SDK**
+3. **Data Element: Link Click XDM** – Builds XDM for `web.webinteraction.linkClicks` (uses URL and Text)
+4. **Rule: Link Clicks - Send to Web SDK**
    - **Event:** Click on `a[href]` elements
-   - **Condition:** Link Click URL is set
-   - **Action:** Send Event with `web.webinteraction.linkClicks` XDM
+   - **Action:** Send Event with `web.webinteraction.linkClicks` XDM (via Link Click XDM)
 
 ## After Running
 
@@ -61,6 +63,6 @@ The property ID is `PR5057e9b14a5e4fae942acbb8a85da6c8`.
 ## Troubleshooting
 
 - **"Core extension not found"** – Ensure the Core extension is installed in your property
-- **"Web SDK extension not found"** – Add the Adobe Experience Platform Web SDK extension
+- **"Web SDK extension not found"** – Add the Adobe Experience Platform Web SDK extension (adobe-alloy)
 - **JWT exchange failed** – Verify credentials, org ID, and private key path
 - **401/403 on Reactor API** – Check that your integration has the Data Collection API and correct scopes
